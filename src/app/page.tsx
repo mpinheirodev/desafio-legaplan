@@ -15,7 +15,10 @@ interface Task {
 
 export default function Home() {
   const [tasks, setTasks] = useState<Task[]>(() => {
-    const tasksOnStorage = localStorage.getItem("tasks");
+    let tasksOnStorage;
+    if (typeof window !== "undefined") {
+      tasksOnStorage = localStorage.getItem("tasks");
+    }
 
     if (tasksOnStorage) {
       return JSON.parse(tasksOnStorage);

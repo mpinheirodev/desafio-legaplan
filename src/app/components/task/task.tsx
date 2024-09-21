@@ -1,4 +1,5 @@
-import { Trash } from 'lucide-react';
+"use client"
+
 import styles from '../../styles/styles.module.scss';
 import DeleteTaskModal from './deleteTask';
 
