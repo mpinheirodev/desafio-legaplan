@@ -1,3 +1,4 @@
+'use client'
 import variables from './styles/settings.module.scss'
 import Icon from '../../public/icon.svg'
 
