@@ -1,9 +1,9 @@
 "use client"
 
 import styles from './styles/styles.module.scss';
-import Task from './components/task';
+import Task from './components/task/task';
 import Header from './components/header';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { NewTask } from './components/task/newTask';
 
 interface Task {
@@ -24,15 +24,9 @@ export default function Home() {
     return [];
   });
 
-  const [tasksDone, setTaskDone] = useState<Task[]>(() => {
-    const tasksDoneonStorage = localStorage.getItem("tasksDone");
-
-    if (tasksDoneonStorage) {
-      return JSON.parse(tasksDoneonStorage);
-    }
-
-    return [];
-  })
+  useEffect(() => {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+  }, [tasks])
 
   function onTaskCreated(content: string) {
     const newTask = {
@@ -45,55 +39,44 @@ export default function Home() {
     const tasksArray = [newTask, ...tasks];
     // atualiza o estado das tasks
     setTasks(tasksArray);
-    // salva as tasks no localStorage
-    localStorage.setItem("tasks", JSON.stringify(tasksArray));
   }
 
   function onDoneTask(id: string) {
-    const taskDone = tasks.find((task) => {
+    const taskDone = tasks.map((task) => {
       if(task.id === id) {
         task.done = !task.done;
-        return task;
       }
-      return;
+      return task;
     })
     
-    if(!taskDone) return;
-
-    // adiciona task no array
-    const tasksDoneArray = [taskDone, ...tasksDone];
     // atualiza o estado das tasks
-    setTaskDone(tasksDoneArray);
-    localStorage.setItem("tasksDone", JSON.stringify(tasksDoneArray));
-
-    onDeleteTask(taskDone.id);
+    setTasks(taskDone)
   }
-  
+
   function onDeleteTask(id: string) {
     const tasksArray = tasks.filter((task) => {
       return task.id !== id;
     });
     
     setTasks(tasksArray);
-    localStorage.setItem("tasks", JSON.stringify(tasksArray));
   }
 
   
   return (
-    <div>
+    <div className={styles.home}>
       <Header />
       <div className={styles.container}>
         <div className={styles.content}>
           <div className={styles.card}>
             <p className={styles.taskDivision}>Suas tarefas de hoje</p>
-            {tasks.map((task) => {
+            {(tasks.filter((task) => (task.done === false)).length > 0) ? tasks.filter((task) => (task.done === false)).map((task) => {
               return <Task key={task.id} task={task} onDeleteTask={onDeleteTask} onDoneTask={onDoneTask}/> 
-            })}
+            }) : <p>Nenhuma tarefa cadastrada</p>}
 
             <p className={styles.taskDivision}>Tarefas finalizadas</p>
-            {tasksDone.map((task) => {
+            {(tasks.filter((task) => (task.done === true)).length > 0) ? tasks.filter((task) => (task.done === true)).map((task) => {
               return <Task key={task.id} task={task} onDeleteTask={onDeleteTask} onDoneTask={onDoneTask}/> 
-            })}
+            }) : <p>Nenhuma tarefa cadastrada</p>}
           </div>
           <NewTask onTaskCreated={onTaskCreated} />
         </div>

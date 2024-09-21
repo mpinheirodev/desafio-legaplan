@@ -1,5 +1,6 @@
 import { Trash } from 'lucide-react';
 import styles from '../../styles/styles.module.scss';
+import DeleteTaskModal from './deleteTask';
 
 interface TaskCardProps {
   task: {
@@ -18,7 +19,7 @@ export default function Task({ task, onDeleteTask, onDoneTask }: TaskCardProps) 
         <input type="checkbox" checked={task.done} onChange={() => onDoneTask(task.id)}/>
         <p>{task.content}</p>
       </div>
-      <Trash className={styles.icon} onClick={() => onDeleteTask(task.id)}/>
+      <DeleteTaskModal task={task} onDeleteTask={onDeleteTask} />
     </div>
   )
 }

@@ -3,11 +3,21 @@
 $primary-color: #53C0F0;
 $secondary-color: #0796D3;
 
+$warning-primary: #D30707;
+$warning-secondary: #F05353;
+
 $font: Inter Tight, sans-serif;
 
 .main {
-  padding: 1.5rem 4rem;
+  padding: 1.5rem 3.5rem;
   margin: 0;
   height: 100vw;
   font-family: $font;
+
+  @media screen {
+    @media (min-width: 320px) {
+      padding: 1.5rem 1.5rem;
+    }
+    
+  }
 }

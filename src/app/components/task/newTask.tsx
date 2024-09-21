@@ -17,9 +17,7 @@ export function NewTask({ onTaskCreated }: NewTaskCard){
     setContent(e.target.value);
   }
 
-  function handleSaveTask(e: React.FormEvent) {
-    e.preventDefault();
-
+  function handleSaveTask() {
     if (content === "") {
       return;
     }
@@ -40,7 +38,9 @@ export function NewTask({ onTaskCreated }: NewTaskCard){
         <Dialog.Content className={styles.modal}>
           <div className={styles.container}>
             <form className={styles.form}>
-              <h1 className={styles.header}>Nova tarefa</h1>
+            <Dialog.Title className={styles.header}>
+                Nova tarefa
+              </Dialog.Title>
               <div className={styles.content}>
                 <span>Título</span>
                 <input onChange={handleContentChange} placeholder="Digite"/>
