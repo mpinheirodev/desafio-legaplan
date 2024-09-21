@@ -7,7 +7,7 @@
   }
 
   @media (max-width: 320px) {
-    width: fill;
+    width: stretch;
   }
 
   .header {
@@ -26,7 +26,7 @@
     @media screen {
       @media (max-width: 320px) {
         flex-direction: column;
-        align-items: start;
+        align-items: flex-start;
 
         .welcome {
           font-size: 1rem;
@@ -79,7 +79,7 @@
           justify-content: space-between;
           border: 1px dashed #E5E5E5;
           border-radius: .5rem;
-          width: fill;
+          width: stretch;
 
           @media screen and (max-width: 320px) {
               gap: 1rem;   
@@ -87,9 +87,39 @@
     
           .title {
             display: flex;
+            align-items: center;
             gap: .5rem;
             font-size: 1rem;
             font-weight: 400;
+          }
+
+          input[type="checkbox"]{
+            appearance: none;
+            border-radius: 4px;
+            border: none;
+            outline: 1px solid #B0BBD1;
+            width: 24px;
+            height: 24px;
+
+            &:checked {
+              border-radius: 4px;
+              border: none;
+              outline: 1px solid #0796D3;
+              accent-color: #A0DCF6;
+              width: 24px;
+              height: 24px;
+
+              &::before {
+                content: "\2713";
+                font-size: 1rem;
+                color: #0796D3;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                height: fill;
+                background-color: #A0DCF6;
+              }
+            }
           }
   
           input[type="checkbox"]:checked + p{

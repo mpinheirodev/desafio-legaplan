@@ -3,7 +3,6 @@
 import * as Dialog from "@radix-ui/react-dialog";
 import { Button } from "@radix-ui/themes";
 import { useState } from "react";
-import { toast } from "sonner";
 import styles from "../../styles/newTask.module.scss"
 
 interface NewTaskCard {
@@ -24,7 +23,6 @@ export function NewTask({ onTaskCreated }: NewTaskCard){
 
     onTaskCreated(content);
     setContent("");
-    toast.success("Tarefa criada com sucesso!");
   }
 
   return (

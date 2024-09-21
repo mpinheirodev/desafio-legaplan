@@ -22,7 +22,7 @@
   }
 
   @media screen and (max-width: 320px) {
-    height: fill;
+    height: stretch;
   }
 
   .container {
@@ -36,8 +36,8 @@
     translate: -50% -50%;
 
     @media screen and (max-width: 320px) {
-      width: fill;
-      height: fill;
+      width: stretch;
+      height: stretch;
       top: 0;
       left: 0;
       translate: 0;
@@ -56,11 +56,11 @@
       filter: drop-shadow(0 24px 8px rgba(0, 0, 0, 0.18));
 
       @media screen and (max-width: 320px) {
-        width: fill;
-        height: fill;
+        width: stretch;
+        height: stretch;
         border: none;
         border-radius: 0;
-        justify-content: start;
+        justify-content: flex-start;
       }
 
       .header {
@@ -72,7 +72,7 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
-        align-items: start;
+        align-items: flex-start;
         gap: .5rem;
 
         span {
