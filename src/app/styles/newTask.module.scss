@@ -1,0 +1,106 @@
+@import './settings.module.scss';
+
+.overlay{
+  position: fixed;
+  inset: 0;
+  backdrop-filter: blur(5px);
+}
+
+.modal {
+  position: fixed;
+  overflow: hidden;
+  inset: 0;
+  width: full;
+  height: 60vh;
+  outline: none;
+  display: flex;
+  flex-direction: column;
+
+  * {
+    margin: 0;
+    padding: 0;
+  }
+
+  .container {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-self: center;
+    translate: -50% -50%;
+    
+    .form {
+      border: 1px solid #E5E5E5;
+      border-radius: 1rem;
+      padding: 2rem;
+      width: 450px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 2rem;
+      background-color: #FFFFFF;
+      filter: drop-shadow(0 24px 8px rgba(0, 0, 0, 0.18));
+
+      .header {
+        font-size: 1.5rem;
+        font-weight: 500;
+      }
+      
+      .content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: start;
+        gap: .5rem;
+
+        span {
+          font-size: 1rem;
+          font-weight: 400;
+        }
+
+        input {
+          width: fill;
+          padding: 1rem;
+          border-radius: .5rem;
+          border: 1px solid #E5E5E5;
+          outline: none;
+        }
+      }
+
+      .buttons {
+        display: flex;
+        gap: .5rem;
+
+
+        .botaoCancelar {
+          width: 100%;
+          padding: 1rem .5rem;
+          border-radius: .5rem;
+          border: none;
+          font-size: 1rem;
+          font-weight: 400;
+          background-color: #E7EEFB;
+        }
+
+        .botaoAdicionar {
+          width: 100%;
+          padding: 1rem .5rem;
+          border-radius: .5rem;
+          border: none;
+          font-size: 1rem;
+          font-weight: 500;
+          color: #FFFFFF;
+          background: linear-gradient(90deg, rgba(7,150,211,1) 0%, rgba(83,192,240,1) 100%);
+        }
+      }
+    }
+  }
+}
+
+.btn_trigger {
+  padding: 1rem .5rem;
+  font-size: 1rem;
+  font-weight: 500;
+}
